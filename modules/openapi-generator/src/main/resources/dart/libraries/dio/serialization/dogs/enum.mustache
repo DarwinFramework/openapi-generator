@@ -1,0 +1,17 @@
+import 'package:dogs_core/dogs_core.dart';
+
+{{#description}}/// {{{description}}}{{/description}}
+{{#isDeprecated}}
+@Deprecated('{{{classname}}} has been deprecated')
+{{/isDeprecated}}
+@serializable
+enum {{{classname}}} {
+{{#allowableValues}}
+{{#enumVars}}
+  {{#description}}
+  /// {{{.}}}
+  {{/description}}
+  {{{name}}},
+{{/enumVars}}
+{{/allowableValues}}
+}

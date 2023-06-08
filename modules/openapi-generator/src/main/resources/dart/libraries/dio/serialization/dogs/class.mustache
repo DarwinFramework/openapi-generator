@@ -1,0 +1,56 @@
+import 'package:dogs_core/dogs_core.dart';
+
+{{!
+    Classes with polymorphism or composition may generate unused imports,
+    these need to be ignored for said classes so that there are no lint errors.
+}}
+{{#parentModel}}
+// ignore_for_file: unused_import
+
+{{/parentModel}}
+
+{{#isDeprecated}}
+@Deprecated('{{{classname}}} has been deprecated')
+{{/isDeprecated}}
+@serializable
+class {{{classname}}} with Dataclass<{{{classname}}}> {
+{{>serialization/dogs/dart_constructor}}
+
+{{#vars}}
+  {{#description}}
+      /// {{{description}}}
+  {{/description}}
+  {{^isEnum}}
+      {{#minimum}}
+          // minimum: {{{minimum}}}
+      {{/minimum}}
+      {{#maximum}}
+          // maximum: {{{maximum}}}
+      {{/maximum}}
+  {{/isEnum}}
+  {{#deprecated}}
+  @Deprecated('{{{name}}} has been deprecated')
+  {{/deprecated}}
+  @PropertyName(r'{{{baseName}}}')
+  {{#required}}
+  {{#finalProperties}}final {{/finalProperties}}{{{datatypeWithEnum}}}{{#isNullable}}?{{/isNullable}} {{{name}}};
+  {{/required}}
+  {{^required}}
+  {{#finalProperties}}final {{/finalProperties}}{{{datatypeWithEnum}}}? {{{name}}};
+  {{/required}}
+{{/vars}}
+}
+{{#vars}}
+    {{#isEnum}}
+        {{^isContainer}}
+
+{{>serialization/dogs/enum_inline}}
+        {{/isContainer}}
+        {{#isContainer}}
+            {{#mostInnerItems}}
+
+{{>serialization/dogs/enum_inline}}
+            {{/mostInnerItems}}
+        {{/isContainer}}
+    {{/isEnum}}
+{{/vars}}

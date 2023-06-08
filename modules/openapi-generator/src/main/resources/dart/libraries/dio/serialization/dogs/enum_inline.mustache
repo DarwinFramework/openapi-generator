@@ -1,0 +1,14 @@
+{{#enumName}}
+{{#description}}/// {{{description}}}{{/description}}
+{{#isDeprecated}}
+@Deprecated('{{{enumName}}} has been deprecated')
+{{/isDeprecated}}
+@serializable
+enum {{{ enumName }}} {
+{{#allowableValues}}
+{{#enumVars}}
+  {{{name}}},
+{{/enumVars}}
+{{/allowableValues}}
+}
+{{/enumName}}

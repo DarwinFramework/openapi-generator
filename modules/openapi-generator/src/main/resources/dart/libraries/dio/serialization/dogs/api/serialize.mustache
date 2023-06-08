@@ -1,0 +1,7 @@
+{{#bodyParam}}_bodyData={{{paramName}}} == null ? null :
+{{^isContainer}}dogs.jsonEncode<{{{baseType}}}>({{{paramName}}}){{/isContainer}}
+{{#isContainer}}
+{{#uniqueItems}}dogs.jsonEncodeSet<{{{baseType}}}>({{{paramName}}}){{/uniqueItems}}
+{{^uniqueItems}}dogs.jsonEncodeList<{{{baseType}}}>({{{paramName}}}){{/uniqueItems}}
+{{/isContainer}}
+{{/bodyParam}};

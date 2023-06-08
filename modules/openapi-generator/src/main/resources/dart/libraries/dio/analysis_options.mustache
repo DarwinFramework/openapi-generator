@@ -7,6 +7,7 @@ analyzer:
     implicit-casts: false
   exclude:
     - test/*.dart{{#useJsonSerializable}}
-    - lib/src/model/*.g.dart{{/useJsonSerializable}}
+    - lib/src/model/*.g.dart{{/useJsonSerializable}}{{#useDogs}}
+    - lib/src/model/*.conv.g.dart{{/useDogs}}
   errors:
     deprecated_member_use_from_same_package: ignore

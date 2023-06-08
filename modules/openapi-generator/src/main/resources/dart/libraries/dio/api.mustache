@@ -3,6 +3,8 @@ import 'dart:async';
 
 {{#includeLibraryTemplate}}api/imports{{/includeLibraryTemplate}}
 import 'package:dio/dio.dart';
+{{#useDogs}}
+import 'package:dogs_core/dogs_core.dart';{{/useDogs}}
 
 {{#operations}}
 {{#imports}}import '{{.}}';
